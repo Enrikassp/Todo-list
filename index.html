@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/b14591f08c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Darbų sąrašas</h1>
+
+        <label for="newTask" id="inputEditlabel">
+          Įveskite užduotį:
+          <input
+            placeholder="Pridėti naują darbą"
+            name="newTask"
+            id="newTaskInput"
+          />
+          <button onclick="addNewTodoTask()">Pridėti</button>
+        </label>
+
+        <label for="assingList" id="assignLabel"
+          >Pasirinkite kuriai dienai norite priskirti:
+
+          <select name="assingList" id="assingListOption">
+            <option hidden disabled selected value="default">
+              Priskirkite savaitės dienai
+            </option>
+            <option value="monday">Pirmadienis</option>
+            <option value="tuesday">Antradienis</option>
+            <option value="wednesday">Trečiadienis</option>
+            <option value="thursday">Ketvirtadienis</option>
+            <option value="friday">Penktadienis</option>
+          </select>
+        </label>
+
+        <section id="weekList">
+          <ul>
+            <li
+              class="weekListElement active"
+              onclick="selectDay('monday', 'Pirmadienio', this)"
+            >
+              Pirmadienis
+            </li>
+            <li
+              class="weekListElement"
+              onclick="selectDay('tuesday', 'Antradienio', this)"
+            >
+              Antradienis
+            </li>
+            <li
+              class="weekListElement"
+              onclick="selectDay('wednesday', 'Trečiadienio', this)"
+            >
+              Trečiadienis
+            </li>
+            <li
+              class="weekListElement"
+              onclick="selectDay('thursday', 'Ketvirtadienio', this)"
+            >
+              Ketvirtadienis
+            </li>
+            <li
+              class="weekListElement"
+              onclick="selectDay('friday', 'Penktadienio', this)"
+            >
+              Penktadienis
+            </li>
+          </ul>
+        </section>
+      </header>
+
+      <section id="main">
+        <h1 class="selectedDayText">Pirmadienio užduotys:</h1>
+
+        <div class="listContainer"></div>
+      </section>
+
+      <div class="editContainer">
+        <article>
+          <button onclick="closeEditTodoTask()" id="exitTodoEdit">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <h1>Užduoties koregavimas</h1>
+
+          <label id="editInput">
+            Įveskite užduoties pakeitimą
+            <input
+              placeholder="Įveskite užduoties pakeitimą"
+              id="editInputVal"
+            />
+          </label>
+
+          <label for="assingList" id="editAssignLabel"
+            >Pasirinkite kuriai dienai norite priskirti:
+
+            <select name="assingList" id="editAssingListOption">
+              <option value="monday">Pirmadienis</option>
+              <option value="tuesday">Antradienis</option>
+              <option value="wednesday">Trečiadienis</option>
+              <option value="thursday">Ketvirtadienis</option>
+              <option value="friday">Penktadienis</option>
+            </select>
+          </label>
+
+          <button id="saveTodoEdit" onclick="saveEdit()">Išsaugoti</button>
+        </article>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

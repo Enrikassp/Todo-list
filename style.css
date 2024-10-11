@@ -1,0 +1,353 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+
+  .container {
+    position: relative;
+    background-color: #f4f4f4;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 50px;
+
+    header {
+      width: 800px;
+      user-select: none;
+
+      h1 {
+        font-family: "Poppins", system-ui;
+        text-align: center;
+        color: #007bff;
+        margin: 0;
+        margin-bottom: 50px;
+      }
+
+      #inputEditlabel {
+        width: 100%;
+        position: relative;
+        font-family: "Poppins", system-ui;
+        font-size: 14px;
+
+        input {
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+          outline: none;
+          border: none;
+          padding: 15px 20px;
+          border-radius: 5px;
+          font-family: "Poppins", system-ui;
+          width: 95%;
+          font-size: 14px;
+        }
+
+        button {
+          position: absolute;
+          top: 56%;
+          right: 2%;
+          font-family: "Poppins", system-ui;
+          outline: none;
+          border: none;
+          background-color: #007bff;
+          padding: 5px 10px;
+          border-radius: 5px;
+          color: #fff;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+          z-index: 10;
+        }
+
+        button:hover {
+          background-color: #0252a8;
+        }
+      }
+
+      #assignLabel {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family: "Poppins", system-ui;
+        font-size: 14px;
+
+        select {
+          outline: none;
+          border: 1px solid #fff;
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+          background-color: #fff;
+          padding: 15px 20px;
+          border-radius: 5px;
+          font-family: "Poppins", system-ui;
+        }
+      }
+
+      #topHr {
+        margin-top: 3em;
+      }
+
+      section#weekList {
+        margin: 40px 0px;
+        border-top: 1px solid rgba(0, 0, 0, 0.15);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+
+        ul {
+          display: flex;
+          justify-content: space-around;
+          list-style: none;
+          padding: 0;
+
+          li {
+            font-family: "Poppins", system-ui;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+          }
+          li.active {
+            color: #fff;
+            background-color: #007bff;
+          }
+          li:hover {
+            background-color: #007bff;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    #main {
+      h1 {
+        font-family: "Poppins", system-ui;
+        color: #363839;
+        font-size: 18px;
+      }
+      .listContainer {
+        display: flex;
+        flex-direction: column;
+        max-height: 400px;
+        overflow-y: auto;
+
+        .todo {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          padding: 10px 0px;
+          article.taskDone:after {
+            position: absolute;
+            left: 4%;
+            top: 50%;
+            height: 1px;
+            background: rgb(161, 160, 160);
+            content: "";
+            width: 88%;
+            display: block;
+          }
+          article {
+            display: flex;
+            align-items: center;
+            input[type="checkbox"] {
+              position: relative;
+              width: 1.5em;
+              height: 1.5em;
+              color: #363839;
+              border: 1px solid #007bff;
+              border-radius: 4px;
+              appearance: none;
+              outline: 0;
+              cursor: pointer;
+              transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+              &::before {
+                position: absolute;
+                content: "";
+                display: block;
+                top: 0px;
+                left: 5px;
+                width: 6px;
+                height: 12px;
+                border-style: solid;
+                border-color: #fff;
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+                opacity: 0;
+              }
+              &:checked {
+                color: #fff;
+                border-color: #007bff;
+                background: #007bff;
+                &::before {
+                  opacity: 1;
+                }
+                &label::before {
+                  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                }
+              }
+            }
+
+            #checkbox {
+              position: relative;
+              cursor: pointer;
+              font-size: 1.5em;
+              font-weight: 600;
+              padding: 0 0.25em 0;
+              user-select: none;
+
+              &::before {
+                position: absolute;
+                content: attr(data-content);
+                color: #9c9e9f;
+                clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+                text-decoration: line-through;
+                text-decoration-thickness: 3px;
+                text-decoration-color: #363839;
+                transition: clip-path 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+              }
+            }
+
+            span {
+              margin-left: 10px;
+              font-family: "Poppins", system-ui;
+              color: #495057;
+            }
+          }
+
+          .btnContainer {
+            user-select: none;
+            button {
+              background-color: transparent;
+              outline: none;
+              border: none;
+              cursor: pointer;
+
+              .red {
+                color: #ff2600;
+                transition: all 0.2s ease-in-out;
+              }
+              .red:hover {
+                color: #5c0f02;
+              }
+              .blue {
+                color: #007bff;
+                transition: all 0.2s ease-in-out;
+              }
+              .blue:hover {
+                color: #0252a8;
+              }
+
+              i {
+                font-size: 16px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .editContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+
+    article {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 20px;
+      padding: 30px;
+      background-color: #f4f4f4;
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+      gap: 20px;
+      position: relative;
+      padding-top: 50px;
+
+      h1 {
+        font-size: 20px;
+        font-family: "Poppins", system-ui;
+        color: #363839;
+        margin: 0;
+      }
+
+      #editAssignLabel {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family: "Poppins", system-ui;
+        font-size: 14px;
+
+        select {
+          outline: none;
+          border: 1px solid #fff;
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+          background-color: #fff;
+          padding: 15px 20px;
+          border-radius: 5px;
+          font-family: "Poppins", system-ui;
+        }
+      }
+      #editInput {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-family: "Poppins", system-ui;
+        font-size: 14px;
+
+        input {
+          box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+          padding: 15px 30px;
+          border-radius: 5px;
+          background-color: #fff;
+          border: none;
+          outline: none;
+        }
+      }
+
+      button {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 50%;
+        padding: 10px 30px;
+        border-radius: 5px;
+        color: #fff;
+        font-family: "Poppins", system-ui;
+        transition: all 0.3s ease-in-out;
+      }
+
+      #saveTodoEdit {
+        background-color: #007bff;
+      }
+
+      #saveTodoEdit:hover {
+        background-color: #0252a8;
+      }
+
+      #exitTodoEdit {
+        position: absolute;
+        top: 5%;
+        right: -15%;
+        color: #363839;
+        background-color: transparent;
+        font-size: 20px;
+        padding: 0;
+      }
+
+      #exitTodoEdit:hover {
+        color: #007bff;
+      }
+    }
+  }
+}
